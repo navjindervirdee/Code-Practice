@@ -1,7 +1,7 @@
-#include <iostream> 
-
+#include <iostream>
+using namespace std;
 int main()
 {
-    std::cout << "This is a native C++ program." << std::endl;
-    return 0;
+ cout << "c++ is better than c." <<endl;
+ return (0);
 }
