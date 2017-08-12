@@ -1,0 +1,305 @@
+//Student Table
+create table Student
+(
+Rollno number(10) primary key,
+
+Stuname varchar(10) unique,
+
+Fathername varchar(10),
+
+Branch varchar(10) not null,
+
+Hostelroomno number(10) not null,
+BloodGroup varchar(10)
+)
+
+
+//StudMobile Table
+create table StudMob(
+
+Rollno number(10),
+
+Mobileno number(10) not null,
+
+constraint f_keystuMob foreign key(Rollno) references Student
+
+)
+
+//StudEmail Table
+create table StudEmail(
+Rollno number(10),
+Email varchar(100) not null,
+constraint f_keystuEmail foreign key(Rollno) references Student
+)
+
+//StuAddress Table
+create table StudAddress(
+Rollno number(10),
+Address varchar(100) not null,
+constraint f_keystuAddress foreign key(Rollno) references Student
+)
+
+//procedure
+create or replace Procedure InsertIntoStudent(rollno in number, sname in varchar, fname in varchar,branch in varchar,roomno in number,bloodgroup in varchar) is
+
+begin
+
+insert into Student values(rollno,sname,fname,branch,roomno,bloodgroup);
+
+end;
+
+
+//procedure
+create or replace procedure updateStudent(roll in number,roomno in number) is
+
+begin
+
+update Student set Hostelroomno=roomno where Rollno=roll;
+
+end;
+
+//table BloodCAMp
+create table BloodCamp(
+
+Bcname varchar(20) primary key,
+Bclocation varchar(20),
+
+BcDate date
+
+);
+
+
+
+//table sponsor
+create table Sponsor(
+Sponsorname varchar(20) primary key, 
+Bcname varchar(20),
+constraint f_keysponbc foreign key(Bcname) references BloodCamp(Bcname)
+);
+
+//procedure
+create or replace procedure Find(bloodgrp in varchar) is
+cursor c is select * from Student;
+begin
+for row in c loop
+if row.BloodGroup=bloodgrp then
+insert into temp values(row.Rollno,row.Stuname,row.Fathername,row.Branch,row.Hostelroomno,row.BloodGroup);
+end if;
+end loop;
+end;
+
+//table StuBloodCamp
+create table StuBloodCamp(
+Rollno number(10), 
+Bcname varchar(20),
+DonationDate date,
+Bloodgrp varchar(10),
+constraint f_key1 foreign key(Rollno) references Student(Rollno),
+constraint f_key2 foreign key(Bcname) references BloodCamp(Bcname)
+)
+
+//table BloodBank
+create table BloodBank(
+BBname varchar(10) primary key,
+Address varchar(10),
+City varchar(10),
+State varchar(10)
+);
+
+//table BloodBG
+create table BloodBG(
+
+BBname varchar(10),
+
+BloodGrp varchar(10),
+
+Avalaible varchar(10),
+
+constraint f_keyBB foreign key(BBname) references BloodBank(BBname)
+
+);
+
+
+//table hospital
+create table Hospital(
+Hname varchar(10) primary key,
+Haddress varchar(10),
+Hcity varchar(10),
+Hstate varchar(10)
+);
+
+//procedure 
+create or replace Procedure FindBloodBank(bloodgrp in varchar) is
+cursor bb is select * from BloodBank;
+cursor bg is select * from BloodBG;
+begin
+for var in bg loop
+if var.BloodGrp=bloodgrp and var.Avalaible='yes' then
+for row in bb loop
+if var.BBname=row.BBname then
+dbms_output.put_line(row.BBname ||'  '||row.Address||'  '||row.City||'  '||row.State);
+end if;
+end loop;
+end if;
+end loop;
+end;
+
+
+
+Student
+
+ROLLNO	STUNAME	   FATHERNAME	BRANCH	HOSTELROOMNO	BLOODGROUP
+2	Harnoor	   Manninder	Cml4	202	        AB+
+3	Lovejot	   Aman	        Cml1	109	        B+
+4	Jassi	   Harjot	Cml2	290	        AB-
+5	Ajay	   Karan	Cml3	180	        O+
+1	Navjinder  Gobinder	Cml3	303	        A+
+
+
+StudAddress
+
+ROLLNO	ADDRESS
+1	Patiala
+2	Ambala
+3	Patiala
+4	Amritsar
+
+
+StudMob
+
+ROLLNO	MOBILENO
+1	9592603034
+2	9592603345
+3	9592603323
+3	9325603034
+
+StudEmail
+
+ROLLNO	EMAIL
+1	navjindervirdee@gmail.com
+2	harnoor@gmail.com
+3	lovey@gmail.com
+4	jassi@gmail.com
+
+
+BloodCamp
+
+BCNAME	BCLOCATION	BCDATE
+A	Patiala	        16-AUG-16
+B	Jalandhar	18-NOV-16
+C	Ambala	        20-DEC-16
+D	Delhi	        29-JAN-17
+
+StuBloodCamp
+
+ROLLNO	BCNAME	DONATIONDATE
+4	A	18-DEC-16
+2	B	13-NOV-16
+3	C	14-JAN-16
+4	A	18-DEC-16
+
+
+BloodBank
+
+BBNAME	ADDRESS	 CITY	  STATE
+a	b	 c	  d
+A	Patiala	 Patiala  Punjab
+B	Ambala	 Ambala	  Punjab
+C	Patiala	 Delhi	  Delhi
+
+
+BLoodBG
+
+BBNAME	BLOODGRP	AVAILABLE
+A	A+	        Yes
+B	AB+	        Yes
+C	B+	        No
+A	O+	        yes
+
+
+//procedure
+create or replace procedure del(bbname in varchar) is
+
+cannotDelete Exception;
+
+pragma exception_init(cannotDelete,-02292);
+
+begin
+
+delete from BloodBank where BBname=bbname;
+
+exception
+
+when cannotDelete then
+
+Dbms_output.put_line('Cannot delete record, child record exist');
+
+end;
+
+//table BLoodBankCamp
+create table BloodBankCamp(
+
+BBname varchar(10),
+
+Bcname varchar(10),
+
+constraint f_keyBBB foreign key(BBname) references BloodBank(BBname),
+
+constraint f_keyBBC foreign key(Bcname) references BloodCamp(Bcname)
+
+)
+
+
+//trigger
+create or replace trigger InsertBloodBG after insert on StuBloodCamp 
+begin
+
+insert into BloodBG values('A', :new.StuBloodCamp.BloodGRP ,'Yes');
+
+end;
+
+//trigger
+create or replace trigger p_key before insert on Student for each row
+
+declare
+
+R Student.Rollno%type;
+
+begin
+
+if (:new.Rollno is null) then
+
+raise_application_error(-20002,'primary key voilation cannot insert null');
+
+end if;
+
+select Rollno into R from Student where Rollno=:new.Rollno;
+
+raise_application_error(-20003,'primary key voilation ,rollno should be unique');
+
+exception
+
+when no_data_found then
+
+null;
+
+end;
+
+//procedure
+create or replace procedure DisplayBloodBank(bbname in varchar) is
+
+cursor c is select * from BloodBank;
+
+begin
+
+for var in c loop
+
+if var.BBname=bbname then
+
+dbms_output.put_line(var.BBname ||' '||var.Address||' '||var.City);
+
+end if;
+
+end loop;
+
+end;

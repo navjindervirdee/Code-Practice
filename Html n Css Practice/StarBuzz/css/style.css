@@ -1,0 +1,122 @@
+﻿body {
+      font-family: Verdana, helvetica, Arial, sans-serif;
+      font-size: small;
+      /*margin-left: 20%;
+      margin-right: 20%;
+      padding: 10px 10px 10px 10px;
+      line-height: 1.6em;*/
+      background-color: pink;
+}
+
+h1, h2 {
+    color: #007e7e;
+}
+
+h1 {
+    font-size: 200%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 130%;
+} 
+
+#starbuzz {
+         display: table-cell;
+         position: absolute;
+         border-style: solid;
+         border-color: #007e7e;
+         border-width: thin;
+         padding-right: 40px;
+         padding-left: 40px;
+         padding-bottom: 40px;
+         padding-top: 40px;
+         vertical-align: top;
+         top: 120px;
+         margin-right: 370px;
+}  
+
+#guarantee {
+            border-color: white;
+            border-width: 1px;
+            border-style: dotted;
+            background-color: #a7cece;
+            padding: 25px;
+            padding-left: 80px;
+            margin: 30px;
+            margin-right: 350px;
+            font-size: 120%;
+            line-height: 1.9em;
+            font-family: "Times New Roman", serif;
+            font-style: italic;
+            color: maroon;
+            background-image: url(../../TonySegway/images/index.jpg);
+            background-repeat: no-repeat;
+            background-position: top left;
+            background-size: 30px 30px;
+            
+}
+
+
+
+aside {
+         display: table-cell;
+         border-style: solid;
+         border-color: #007e7e;
+         border-width: thin;
+         width: 270px;
+     
+         padding-right: 20px;
+         padding-left: 20px;
+         padding-bottom: 20px;
+         padding-top: 20px
+
+         margin-left: 20px;
+         margin-right: 20px;
+ 
+         text-align: center;
+         line-height: 1.5;
+         float: right;
+         background-color: yellow;
+         position: absolute;
+         top: 120px;
+         right: 20px;
+         vertical-align: top;
+         
+}
+
+footer {
+         border-style: solid;
+         border-color: #007e7e;
+         border-width: thin;
+
+         padding-right: 20px;
+         padding-left: 20px;
+         padding-bottom: 20px;
+         padding-top: 20px
+
+         position: absolute:
+         top: 800px;
+         text-align: center;
+}
+aside h1 {
+            color: black;
+}
+aside h2 {
+            color: maroon;
+}      
+
+a:link {
+        color: black;
+}
+
+a:visited {
+           color: maroon;
+}
+
+a:hover {
+         color: red;
+} 
+
+
+ 

@@ -1,0 +1,20 @@
+﻿body{
+     font-family: Verdana, Geneva, Arial, sans-serif;
+     color: navy;
+     font-size: 16px;
+     background-color:white
+    }
+h1  {
+     color: #cc6600 ;
+     border-bottom: thin dotted #888888;
+     font-size: 220%;
+    }
+h2  {
+     color: #cc6600;
+     border-bottom: thin dotted #888888;
+     font-size: 130%;
+     font-weight: normal;
+    }
+blockquote{
+           font-style: italic;
+          }

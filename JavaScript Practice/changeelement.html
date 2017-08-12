@@ -1,0 +1,36 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Change web page content using JS.</title>
+	<script>
+		function init(){
+			var element = document.getElementById("code9");
+			element.innerHTML = "changed";
+			element.setAttribute("class","color");
+		}
+		window.onload = init;
+		if(99 == "99"){
+			alert("matched");
+		}
+		else{
+			alert("not match");
+		}
+		
+	</script>
+	<style>
+		.color {
+			color: pink;
+			}
+	</style>
+		
+	
+</head>
+
+<body>
+	<h1>change</h1>
+	<p id="code9">unchanged content</p>
+	
+</body>
+
+</html>

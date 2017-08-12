@@ -1,0 +1,15 @@
+ StringTokenizer st = new StringTokenizer(s," !,?._'@");
+            String [] stt = new String[s.length()];
+          int count  =0,i=0; 
+       
+          System.out.println(count);  
+          while(st.hasMoreTokens()){
+           count++;
+           stt[i] =st.nextToken();
+           i++;   
+          }
+           System.out.println(count); 
+           for(int j=0; j<i; j++ ){
+            System.out.println(stt[i]);   
+           }
+             
