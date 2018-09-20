@@ -1,0 +1,2 @@
+Dependencies for Project 'project', Target 'Target 1': (DO NOT MODIFY !)
+F (.\addition.s)(0x59F0882E)(--cpu=8-M.Base --li --pd "__EVAL SETA 1" -g-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\Device\ARM\ARMv8MBL\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 524"--pd "ARMv8MBL SETA 1"--list .\listings\addition.lst--xref -o .\objects\addition.o--depend .\objects\addition.d)

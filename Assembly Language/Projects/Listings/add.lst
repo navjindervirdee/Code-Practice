@@ -1,0 +1,72 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             program,CODE,READONLY
+    2 00000000         entry
+    3 00000000         main
+    4 00000000 4800            LDR              R0,val1
+    5 00000002 4901            LDR              R1,val2
+    6 00000004         
+    7 00000004         
+    8 00000004                 AREA             program,DATA,READONLY
+    9 00000004 00000003 
+                       val1    DCD              &00000003
+   10 00000008 00000004 
+                       val2    DCD              &00000004
+   11 0000000C                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
+ork --depend=.\objects\add.d -o.\objects\add.o -I.\RTE\_Target_1 -IC:\Keil_v5\A
+RM\PACK\ARM\CMSIS\5.0.1\Device\ARM\ARMCM0\Include -IC:\Keil_v5\ARM\CMSIS\Includ
+e --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 524" --predef
+ine="ARMCM0 SETA 1" --list=.\listings\add.lst add.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+entry 00000000
+
+Symbol: entry
+   Definitions
+      At line 2 in file add.s
+   Uses
+      None
+Comment: entry unused
+main 00000000
+
+Symbol: main
+   Definitions
+      At line 3 in file add.s
+   Uses
+      None
+Comment: main unused
+program 00000000
+
+Symbol: program
+   Definitions
+      At line 1 in file add.s
+   Uses
+      None
+Comment: program unused
+val1 00000004
+
+Symbol: val1
+   Definitions
+      At line 9 in file add.s
+   Uses
+      At line 4 in file add.s
+Comment: val1 used once
+val2 00000008
+
+Symbol: val2
+   Definitions
+      At line 10 in file add.s
+   Uses
+      At line 5 in file add.s
+Comment: val2 used once
+5 symbols
+338 symbols in table

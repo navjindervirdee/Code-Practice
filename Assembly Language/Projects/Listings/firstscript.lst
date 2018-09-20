@@ -1,0 +1,122 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             program1,code,readonly
+    2 00000000         entry
+    3 00000000         main
+    4 00000000 48FF            LDR              R0,val1
+    5 00000002 49FF            LDR              R1,val2
+    6 00000004 4604            MOV              R4,R0
+    7 00000006 1A40            SUBS             R0,R0,R1
+    8 00000008 2300            MOVS             R3, #0x00
+    9 0000000A 4298            CMP              R0,R3
+   10 0000000C D000            BEQ              ABC
+   11 0000000E D102            BNE              CDE
+   12 00000010 2200    ABC     MOVS             R2, #0x00
+   13 00000012 4298            CMP              R0,R3
+   14 00000014 D000            BEQ              DEF
+   15 00000016 2201    CDE     MOVS             R2, #0x01
+   16 00000018         DEF
+   17 00000018         
+   18 00000018                 AREA             program2,data,readonly
+   19 00000000 00000003 
+                       val1    DCD              &00000003
+   20 00000004 00000004 
+                       val2    DCD              &00000004
+   21 00000008                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
+ork --depend=.\objects\firstscript.d -o.\objects\firstscript.o -I.\RTE\_Target_
+1 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\Device\ARM\ARMCM0\Include -IC:\Keil_v5\
+ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SE
+TA 524" --predefine="ARMCM0 SETA 1" --list=.\listings\firstscript.lst firstscri
+pt.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ABC 00000010
+
+Symbol: ABC
+   Definitions
+      At line 12 in file firstscript.s
+   Uses
+      At line 10 in file firstscript.s
+Comment: ABC used once
+CDE 00000016
+
+Symbol: CDE
+   Definitions
+      At line 15 in file firstscript.s
+   Uses
+      At line 11 in file firstscript.s
+Comment: CDE used once
+DEF 00000018
+
+Symbol: DEF
+   Definitions
+      At line 16 in file firstscript.s
+   Uses
+      At line 14 in file firstscript.s
+Comment: DEF used once
+entry 00000000
+
+Symbol: entry
+   Definitions
+      At line 2 in file firstscript.s
+   Uses
+      None
+Comment: entry unused
+main 00000000
+
+Symbol: main
+   Definitions
+      At line 3 in file firstscript.s
+   Uses
+      None
+Comment: main unused
+program1 00000000
+
+Symbol: program1
+   Definitions
+      At line 1 in file firstscript.s
+   Uses
+      None
+Comment: program1 unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+program2 00000000
+
+Symbol: program2
+   Definitions
+      At line 18 in file firstscript.s
+   Uses
+      None
+Comment: program2 unused
+val1 00000000
+
+Symbol: val1
+   Definitions
+      At line 19 in file firstscript.s
+   Uses
+      At line 4 in file firstscript.s
+Comment: val1 used once
+val2 00000004
+
+Symbol: val2
+   Definitions
+      At line 20 in file firstscript.s
+   Uses
+      At line 5 in file firstscript.s
+Comment: val2 used once
+3 symbols
+342 symbols in table

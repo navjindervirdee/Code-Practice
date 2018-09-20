@@ -1,0 +1,11 @@
+	AREA program,CODE,READONLY
+entry
+main
+	LDR R0,val1
+	LDR R1,val2
+	
+		
+	AREA program,DATA,READONLY
+val1 DCD &00000003
+val2 DCD &00000004
+	END

@@ -1,0 +1,62 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             program,code,readonly
+    2 00000000         entry
+    3 00000000 4800            LDR              R0, val1
+    4 00000002 4901            LDR              R1, val2
+    5 00000004         
+    6 00000004                 AREA             program,data,readonly
+    7 00000004 00000003 
+                       val1    DCD              &00000003
+    8 00000008 00000004 
+                       val2    DCD              &00000004
+    9 0000000C                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4 --apcs=interw
+ork --depend=.\objects\num.d -o.\objects\num.o -I.\RTE\_Target_1 -IC:\Keil_v5\A
+RM\PACK\ARM\CMSIS\5.1.1\Device\ARM\ARMCM4\Include -IC:\Keil_v5\ARM\CMSIS\Includ
+e --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 524" --predef
+ine="ARMCM4 SETA 1" --list=.\listings\num.lst num.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+entry 00000000
+
+Symbol: entry
+   Definitions
+      At line 2 in file num.s
+   Uses
+      None
+Comment: entry unused
+program 00000000
+
+Symbol: program
+   Definitions
+      At line 1 in file num.s
+   Uses
+      None
+Comment: program unused
+val1 00000004
+
+Symbol: val1
+   Definitions
+      At line 7 in file num.s
+   Uses
+      At line 3 in file num.s
+Comment: val1 used once
+val2 00000008
+
+Symbol: val2
+   Definitions
+      At line 8 in file num.s
+   Uses
+      At line 4 in file num.s
+Comment: val2 used once
+4 symbols
+337 symbols in table
